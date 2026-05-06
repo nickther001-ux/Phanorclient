@@ -68,14 +68,7 @@ export default function Logistics() {
         </div>
 
         {/* Four pillars — equal 4-column grid, centered */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(4, 1fr)',
-            gap: '1.5rem',
-            marginBottom: '5rem',
-          }}
-        >
+        <div className="pillars-grid" style={{ marginBottom: '5rem' }}>
           {pillars.map(({ icon: Icon, titleKey, descKey }, i) => (
             <motion.div
               key={i}
@@ -112,13 +105,11 @@ export default function Logistics() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
+          className="logistics-zone-grid"
           style={{
             background: 'rgba(255,255,255,0.04)',
             border: '1px solid rgba(197,160,89,0.25)',
-            padding: '3.5rem',
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gap: '3rem',
+            padding: '2rem',
             alignItems: 'start',
           }}
         >

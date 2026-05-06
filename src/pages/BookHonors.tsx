@@ -63,7 +63,7 @@ export default function BookHonors() {
               }}
               onSubmit={(e) => e.preventDefault()}
             >
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.75rem', marginBottom: '1.75rem' }}>
+              <div className="form-row-2" style={{ marginBottom: '1.75rem' }}>
                 <div>
                   <label className="form-label">{t('bh_label_name')}</label>
                   <input type="text" className="form-input" />
@@ -82,7 +82,7 @@ export default function BookHonors() {
                 </div>
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '1.75rem', marginBottom: '1.75rem' }}>
+              <div className="form-row-3" style={{ marginBottom: '1.75rem' }}>
                 <div>
                   <label className="form-label">{t('bh_label_type')}</label>
                   <select className="form-input" style={{ background: 'var(--onyx)', cursor: 'pointer' }}>

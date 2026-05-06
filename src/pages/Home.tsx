@@ -100,7 +100,7 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: '2rem' }}>
+          <div className="features-grid">
             {features.map(({ icon: Icon, titleKey, descKey }, i) => (
               <motion.div
                 key={i}
@@ -162,7 +162,7 @@ export default function Home() {
       <section style={{ padding: '6rem 0', background: 'rgba(197,160,89,0.04)', borderTop: '1px solid rgba(197,160,89,0.2)', borderBottom: '1px solid rgba(197,160,89,0.2)' }}>
         {/* centering wrapper */}
         <div style={{ width: '100%', maxWidth: '1200px', marginLeft: 'auto', marginRight: 'auto', paddingLeft: '1.5rem', paddingRight: '1.5rem' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center' }}>
+          <div className="circle-grid" style={{ alignItems: 'center' }}>
 
             {/* Left: text */}
             <motion.div {...fadeIn} style={{ width: '100%' }}>
