@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ShoppingCart, AlertCircle } from 'lucide-react';
+import { useLang } from '../context/LangContext';
 
 const B2C_PRODUCTS = [
   { id: 1, name: 'Sélect Bundle: Le Classique', desc: '4x Ribeye Prime, 2x Saumon, 1kg Viande Hachée Maigre', price: 145, weight: '3.5 kg', lowStock: false, image: '/images/packaging.png' },
@@ -9,87 +10,126 @@ const B2C_PRODUCTS = [
 ];
 
 const B2B_PRODUCTS = [
-  { id: 4, name: 'Caisse: Ribeye AAA', desc: 'Coupe entière, non parée, emballage sous vide industriel', price: 450, weight: '12-14 kg', lowStock: false, image: '/images/storage.png' },
-  { id: 5, name: 'Caisse: Saumon de l\'Atlantique', desc: 'Filets entiers, qualité sushi', price: 280, weight: '10 kg', lowStock: false, image: '/images/seafood.png' },
+  { id: 4, name: 'Caisse: Ribeye AAA', desc: 'Coupe entière, non parée, emballage sous vide industriel', price: 450, weight: '12–14 kg', lowStock: false, image: '/images/storage.png' },
+  { id: 5, name: "Caisse: Saumon de l'Atlantique", desc: 'Filets entiers, qualité sushi', price: 280, weight: '10 kg', lowStock: false, image: '/images/seafood.png' },
   { id: 6, name: 'Caisse: Poitrine de Boeuf (Brisket)', desc: 'Idéal pour fumoir commercial', price: 310, weight: '15 kg', lowStock: true, image: '/images/storage.png' },
   { id: 7, name: 'Caisse: Pattes de Crabe Royal', desc: 'Congélation rapide, qualité supérieure', price: 650, weight: '9 kg', lowStock: false, image: '/images/seafood.png' },
 ];
 
 export default function Shop() {
   const [mode, setMode] = useState<'b2c' | 'b2b'>('b2c');
+  const { t } = useLang();
 
   const products = mode === 'b2c' ? B2C_PRODUCTS : B2B_PRODUCTS;
 
   return (
-    <div className="bg-onyx text-white min-h-screen pt-32 pb-24">
-      <div className="container mx-auto px-6">
-        
+    <div className="bg-onyx text-white min-h-screen page-top" style={{ paddingBottom: '6rem' }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 1.5rem' }}>
+
         {/* Header & Toggle */}
-        <div className="flex flex-col items-center mb-16">
-          <motion.h1 
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '4rem' }}>
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="heading-bebas text-6xl md:text-8xl text-center mb-10"
+            className="heading-bebas"
+            style={{ fontSize: 'clamp(3rem, 8vw, 5rem)', textAlign: 'center', marginBottom: '2.5rem', letterSpacing: '0.06em' }}
           >
-            LA BOUTIQUE <span className="text-gold">SOUVERAINE</span>
+            {t('shop_title')} <span className="text-gold">{t('shop_highlight')}</span>
           </motion.h1>
 
-          <div className="flex border border-gold/30 p-1 bg-white/5 backdrop-blur-sm relative">
-            <div 
-              className={`absolute top-1 bottom-1 w-[calc(50%-4px)] bg-gold transition-all duration-300 z-0 ${mode === 'b2c' ? 'left-1' : 'left-[calc(50%+2px)]'}`}
-            ></div>
-            
-            <button 
+          <div style={{ display: 'flex', border: '1px solid rgba(197,160,89,0.3)', padding: '0.25rem', background: 'rgba(255,255,255,0.04)', position: 'relative' }}>
+            <div
+              style={{
+                position: 'absolute', top: '0.25rem', bottom: '0.25rem',
+                width: 'calc(50% - 4px)',
+                background: 'var(--gold)',
+                transition: 'left 0.3s',
+                left: mode === 'b2c' ? '0.25rem' : 'calc(50% + 2px)',
+                zIndex: 0,
+              }}
+            />
+            <button
               onClick={() => setMode('b2c')}
-              className={`relative z-10 px-8 py-3 heading-bebas text-2xl tracking-wider transition-colors ${mode === 'b2c' ? 'text-onyx' : 'text-white/70 hover:text-white'}`}
+              className="heading-bebas"
+              style={{
+                position: 'relative', zIndex: 1,
+                padding: '0.75rem 2rem',
+                fontSize: '1.1rem',
+                letterSpacing: '0.1em',
+                color: mode === 'b2c' ? 'var(--onyx)' : 'rgba(245,245,245,0.65)',
+                background: 'none', border: 'none', cursor: 'pointer', transition: 'color 0.3s',
+              }}
             >
-              Sélect Bundles (B2C)
+              {t('shop_b2c_btn')}
             </button>
-            <button 
+            <button
               onClick={() => setMode('b2b')}
-              className={`relative z-10 px-8 py-3 heading-bebas text-2xl tracking-wider transition-colors ${mode === 'b2b' ? 'text-onyx' : 'text-white/70 hover:text-white'}`}
+              className="heading-bebas"
+              style={{
+                position: 'relative', zIndex: 1,
+                padding: '0.75rem 2rem',
+                fontSize: '1.1rem',
+                letterSpacing: '0.1em',
+                color: mode === 'b2b' ? 'var(--onyx)' : 'rgba(245,245,245,0.65)',
+                background: 'none', border: 'none', cursor: 'pointer', transition: 'color 0.3s',
+              }}
             >
-              Wholesale Cases (B2B)
+              {t('shop_b2b_btn')}
             </button>
           </div>
         </div>
 
         {/* Products Grid */}
         <AnimatePresence mode="wait">
-          <motion.div 
+          <motion.div
             key={mode}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.4 }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '2rem' }}
           >
             {products.map((product) => (
-              <div key={product.id} className="group border border-white/10 bg-white/5 hover:border-gold/50 transition-colors overflow-hidden flex flex-col">
-                <div className="h-64 relative overflow-hidden">
-                  <img 
-                    src={product.image} 
-                    alt={product.name} 
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100" 
+              <div
+                key={product.id}
+                style={{ border: '1px solid rgba(255,255,255,0.1)', background: 'rgba(255,255,255,0.04)', display: 'flex', flexDirection: 'column', overflow: 'hidden', transition: 'border-color 0.3s' }}
+                onMouseEnter={(e) => (e.currentTarget.style.borderColor = 'rgba(197,160,89,0.5)')}
+                onMouseLeave={(e) => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)')}
+              >
+                <div style={{ height: '16rem', position: 'relative', overflow: 'hidden' }}>
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.8, transition: 'transform 0.7s, opacity 0.3s' }}
+                    onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.08)'; e.currentTarget.style.opacity = '1'; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.opacity = '0.8'; }}
                   />
                   {product.lowStock && (
-                    <div className="absolute top-4 right-4 bg-red-600/90 text-white heading-bebas px-3 py-1 tracking-wider text-sm flex items-center gap-2 backdrop-blur-sm">
-                      <AlertCircle size={14} /> FAIBLE STOCK
+                    <div style={{ position: 'absolute', top: '1rem', right: '1rem', background: 'rgba(220,38,38,0.9)', color: 'white', display: 'flex', alignItems: 'center', gap: '0.4rem', padding: '0.25rem 0.75rem', backdropFilter: 'blur(4px)' }}>
+                      <AlertCircle size={13} />
+                      <span className="heading-bebas" style={{ fontSize: '0.8rem', letterSpacing: '0.1em' }}>{t('shop_low_stock')}</span>
                     </div>
                   )}
-                  <div className="absolute bottom-4 left-4 bg-onyx/90 text-gold heading-mont px-3 py-1 text-xs tracking-widest uppercase border border-gold/30">
+                  <div style={{ position: 'absolute', bottom: '1rem', left: '1rem', background: 'rgba(26,26,26,0.9)', color: 'var(--gold)', padding: '0.2rem 0.65rem', fontSize: '0.7rem', letterSpacing: '0.15em', textTransform: 'uppercase', border: '1px solid rgba(197,160,89,0.3)', fontFamily: 'Montserrat, sans-serif' }}>
                     {product.weight}
                   </div>
                 </div>
-                
-                <div className="p-6 flex flex-col flex-grow">
-                  <h3 className="heading-bebas text-3xl mb-2 tracking-wide text-white group-hover:text-gold transition-colors">{product.name}</h3>
-                  <p className="text-white/50 text-sm font-light mb-6 flex-grow">{product.desc}</p>
-                  
-                  <div className="flex items-end justify-between mt-auto">
-                    <div className="heading-mont font-medium text-2xl">${product.price}</div>
-                    <button className="flex items-center gap-2 border border-white/20 px-4 py-2 hover:bg-white hover:text-onyx transition-colors text-sm uppercase tracking-wider font-medium">
-                      <ShoppingCart size={16} /> Ajouter
+
+                <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
+                  <h3 className="heading-bebas" style={{ fontSize: '1.5rem', letterSpacing: '0.06em', marginBottom: '0.5rem', color: 'var(--white)', transition: 'color 0.3s' }}>
+                    {product.name}
+                  </h3>
+                  <p style={{ color: 'rgba(245,245,245,0.5)', fontSize: '0.875rem', fontWeight: 300, marginBottom: '1.5rem', flexGrow: 1 }}>
+                    {product.desc}
+                  </p>
+                  <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginTop: 'auto' }}>
+                    <span className="heading-mont" style={{ fontSize: '1.5rem', fontWeight: 500 }}>${product.price}</span>
+                    <button
+                      style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', border: '1px solid rgba(255,255,255,0.2)', padding: '0.5rem 1rem', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.12em', background: 'none', color: 'var(--white)', cursor: 'pointer', transition: 'all 0.25s', fontFamily: 'Montserrat, sans-serif', fontWeight: 500 }}
+                      onMouseEnter={(e) => { e.currentTarget.style.background = 'var(--white)'; e.currentTarget.style.color = 'var(--onyx)'; }}
+                      onMouseLeave={(e) => { e.currentTarget.style.background = 'none'; e.currentTarget.style.color = 'var(--white)'; }}
+                    >
+                      <ShoppingCart size={14} /> {t('shop_add')}
                     </button>
                   </div>
                 </div>

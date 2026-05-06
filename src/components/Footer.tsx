@@ -1,75 +1,129 @@
 import { Link } from 'react-router-dom';
 import { Facebook, Instagram, Twitter, Mail, MapPin, Phone } from 'lucide-react';
+import { useLang } from '../context/LangContext';
 
 export default function Footer() {
+  const { t } = useLang();
+
+  const navLinks = [
+    { key: 'nav_home' as const, path: '/' },
+    { key: 'nav_shop' as const, path: '/shop' },
+    { key: 'nav_bookHonors' as const, path: '/book-honors' },
+    { key: 'nav_logistics' as const, path: '/logistics' },
+    { key: 'nav_about' as const, path: '/about' },
+  ];
+
   return (
-    <footer className="bg-onyx border-t border-gold/20 pt-20 pb-10">
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-          <div className="col-span-1 md:col-span-1 flex flex-col items-start">
-            <img src="/logo.png" alt="Phanor Logo" className="h-16 w-auto gold-filter mb-6" />
-            <p className="text-white/60 text-sm leading-relaxed mb-6 font-light">
-              L'empire de la viande et des fruits de mer premium. Une qualité irréprochable, de la boucherie à votre table.
+    <footer style={{ background: 'var(--onyx)', borderTop: '1px solid rgba(197,160,89,0.2)', paddingTop: '5rem', paddingBottom: '2.5rem' }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 1.5rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '3rem', marginBottom: '4rem' }}>
+
+          {/* Brand column */}
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+            <img src="/logo.png" alt="Phanor Logo" className="gold-filter" style={{ height: '4rem', width: 'auto', marginBottom: '1.5rem' }} />
+            <p style={{ color: 'rgba(245,245,245,0.55)', fontSize: '0.875rem', lineHeight: 1.7, marginBottom: '1.5rem', fontWeight: 300 }}>
+              {t('footer_tagline')}
             </p>
-            <div className="flex gap-4">
-              <a href="#" className="text-gold hover:text-white transition-colors"><Instagram size={20} /></a>
-              <a href="#" className="text-gold hover:text-white transition-colors"><Facebook size={20} /></a>
-              <a href="#" className="text-gold hover:text-white transition-colors"><Twitter size={20} /></a>
+            <div style={{ display: 'flex', gap: '1rem' }}>
+              <a href="#" style={{ color: 'var(--gold)', transition: 'color 0.2s' }} onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--white)')} onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--gold)')}><Instagram size={18} /></a>
+              <a href="#" style={{ color: 'var(--gold)', transition: 'color 0.2s' }} onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--white)')} onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--gold)')}><Facebook size={18} /></a>
+              <a href="#" style={{ color: 'var(--gold)', transition: 'color 0.2s' }} onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--white)')} onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--gold)')}><Twitter size={18} /></a>
             </div>
           </div>
 
+          {/* Navigation */}
           <div>
-            <h4 className="heading-bebas text-2xl text-gold mb-6 tracking-wider">Navigation</h4>
-            <ul className="space-y-3 flex flex-col">
-              <Link to="/" className="text-white/70 hover:text-gold transition-colors text-sm heading-mont tracking-wide">Accueil</Link>
-              <Link to="/shop" className="text-white/70 hover:text-gold transition-colors text-sm heading-mont tracking-wide">La Boutique</Link>
-              <Link to="/book-honors" className="text-white/70 hover:text-gold transition-colors text-sm heading-mont tracking-wide">Book Honors</Link>
-              <Link to="/logistics" className="text-white/70 hover:text-gold transition-colors text-sm heading-mont tracking-wide">Logistique</Link>
-              <Link to="/about" className="text-white/70 hover:text-gold transition-colors text-sm heading-mont tracking-wide">À Propos</Link>
+            <h4 className="heading-bebas text-gold" style={{ fontSize: '1.25rem', letterSpacing: '0.15em', marginBottom: '1.25rem' }}>
+              {t('footer_nav')}
+            </h4>
+            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+              {navLinks.map(({ key, path }) => (
+                <li key={key}>
+                  <Link
+                    to={path}
+                    className="heading-mont"
+                    style={{ color: 'rgba(245,245,245,0.6)', fontSize: '0.875rem', letterSpacing: '0.06em', transition: 'color 0.2s' }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--gold)')}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(245,245,245,0.6)')}
+                  >
+                    {t(key)}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
+          {/* Contact */}
           <div>
-            <h4 className="heading-bebas text-2xl text-gold mb-6 tracking-wider">Contact</h4>
-            <ul className="space-y-4">
-              <li className="flex items-start gap-3 text-white/70 text-sm">
-                <MapPin size={18} className="text-gold shrink-0 mt-0.5" />
-                <span>Montréal, QC<br/>Zone de livraison 1-5</span>
+            <h4 className="heading-bebas text-gold" style={{ fontSize: '1.25rem', letterSpacing: '0.15em', marginBottom: '1.25rem' }}>
+              {t('footer_contact')}
+            </h4>
+            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              <li style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem', color: 'rgba(245,245,245,0.6)', fontSize: '0.875rem' }}>
+                <MapPin size={16} style={{ color: 'var(--gold)', flexShrink: 0, marginTop: '0.1rem' }} />
+                <span>Montréal, QC<br />Zone de livraison 1–5</span>
               </li>
-              <li className="flex items-center gap-3 text-white/70 text-sm">
-                <Phone size={18} className="text-gold shrink-0" />
+              <li style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', color: 'rgba(245,245,245,0.6)', fontSize: '0.875rem' }}>
+                <Phone size={16} style={{ color: 'var(--gold)', flexShrink: 0 }} />
                 <span>438-373-7253</span>
               </li>
-              <li className="flex items-center gap-3 text-white/70 text-sm">
-                <Mail size={18} className="text-gold shrink-0" />
+              <li style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', color: 'rgba(245,245,245,0.6)', fontSize: '0.875rem' }}>
+                <Mail size={16} style={{ color: 'var(--gold)', flexShrink: 0 }} />
                 <span>feedme.meat01@gmail.com</span>
               </li>
             </ul>
           </div>
 
+          {/* Newsletter */}
           <div>
-            <h4 className="heading-bebas text-2xl text-gold mb-6 tracking-wider">Newsletter</h4>
-            <p className="text-white/60 text-sm mb-4 font-light">Inscrivez-vous pour des offres exclusives et des arrivages rares.</p>
-            <form className="flex border border-gold/30 focus-within:border-gold transition-colors" onSubmit={(e) => e.preventDefault()}>
-              <input 
-                type="email" 
-                placeholder="Votre courriel" 
-                className="bg-transparent text-white px-4 py-2 w-full focus:outline-none text-sm"
+            <h4 className="heading-bebas text-gold" style={{ fontSize: '1.25rem', letterSpacing: '0.15em', marginBottom: '1.25rem' }}>
+              {t('footer_newsletter')}
+            </h4>
+            <p style={{ color: 'rgba(245,245,245,0.55)', fontSize: '0.875rem', fontWeight: 300, marginBottom: '1rem' }}>
+              {t('footer_newsletter_sub')}
+            </p>
+            <form
+              style={{ display: 'flex', border: '1px solid rgba(197,160,89,0.3)', transition: 'border-color 0.2s' }}
+              onSubmit={(e) => e.preventDefault()}
+              onFocus={(e) => ((e.currentTarget as HTMLElement).style.borderColor = 'var(--gold)')}
+              onBlur={(e) => ((e.currentTarget as HTMLElement).style.borderColor = 'rgba(197,160,89,0.3)')}
+            >
+              <input
+                type="email"
+                placeholder={t('footer_email_placeholder')}
+                style={{ background: 'transparent', color: 'var(--white)', padding: '0.625rem 1rem', width: '100%', outline: 'none', fontSize: '0.875rem', border: 'none' }}
               />
-              <button type="submit" className="bg-gold text-onyx heading-bebas px-4 py-2 tracking-wider hover:bg-white transition-colors">
-                Rejoindre
+              <button
+                type="submit"
+                className="heading-bebas bg-gold text-onyx"
+                style={{ padding: '0.625rem 1rem', fontSize: '0.9rem', letterSpacing: '0.12em', border: 'none', cursor: 'pointer', flexShrink: 0, transition: 'background 0.25s' }}
+                onMouseEnter={(e) => (e.currentTarget.style.background = 'var(--white)')}
+                onMouseLeave={(e) => (e.currentTarget.style.background = 'var(--gold)')}
+              >
+                {t('footer_join')}
               </button>
             </form>
           </div>
+
         </div>
 
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-white/40 text-xs font-light">
-            &copy; {new Date().getFullYear()} Phanor Distribution Inc. Tous droits réservés.
+        {/* Bottom bar */}
+        <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: '2rem', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '1rem' }}>
+          <p style={{ color: 'rgba(245,245,245,0.35)', fontSize: '0.75rem', fontWeight: 300 }}>
+            &copy; {new Date().getFullYear()} {t('footer_rights')}
           </p>
-          <div className="flex gap-6 text-white/40 text-xs font-light">
-            <a href="#" className="hover:text-gold transition-colors">Politique de confidentialité</a>
-            <a href="#" className="hover:text-gold transition-colors">Conditions générales</a>
+          <div style={{ display: 'flex', gap: '1.5rem' }}>
+            {([['footer_privacy', '#'], ['footer_terms', '#']] as const).map(([key, href]) => (
+              <a
+                key={key}
+                href={href}
+                style={{ color: 'rgba(245,245,245,0.35)', fontSize: '0.75rem', fontWeight: 300, transition: 'color 0.2s' }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--gold)')}
+                onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(245,245,245,0.35)')}
+              >
+                {t(key)}
+              </a>
+            ))}
           </div>
         </div>
       </div>
