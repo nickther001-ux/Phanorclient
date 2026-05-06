@@ -21,8 +21,21 @@ export default function Logistics() {
   ];
 
   return (
-    <div className="bg-onyx text-white min-h-screen page-top" style={{ paddingBottom: '7rem' }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 1.5rem' }}>
+    <div className="bg-onyx text-white min-h-screen page-top" style={{ paddingBottom: '7rem', position: 'relative', overflow: 'hidden' }}>
+
+      {/* Subtle meat background */}
+      <div style={{
+        position: 'absolute', inset: 0, zIndex: 0, pointerEvents: 'none',
+      }}>
+        <img
+          src="/images/hero.png"
+          alt=""
+          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', opacity: 0.07 }}
+        />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(26,26,26,0.5) 0%, transparent 30%, transparent 70%, rgba(26,26,26,0.7) 100%)' }} />
+      </div>
+
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 1.5rem', position: 'relative', zIndex: 1 }}>
 
         {/* Page header */}
         <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
