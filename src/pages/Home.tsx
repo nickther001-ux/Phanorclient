@@ -34,9 +34,13 @@ export default function Home() {
           <motion.img
             src="/images/hero.png"
             alt="Wagyu Marbling"
-            animate={{ scale: [1, 1.07], x: [0, -18] }}
-            transition={{ duration: 14, repeat: Infinity, repeatType: 'reverse', ease: 'easeInOut' }}
-            style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.42, display: 'block', transformOrigin: 'center center' }}
+            animate={{
+              scale: [1, 1.18, 1.08, 1.2, 1],
+              x: [0, -30, 20, -15, 0],
+              y: [0, -12, 10, -8, 0],
+            }}
+            transition={{ duration: 24, repeat: Infinity, ease: 'easeInOut', times: [0, 0.25, 0.5, 0.75, 1] }}
+            style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.45, display: 'block', transformOrigin: 'center center' }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-onyx via-onyx/50 to-transparent" />
         </div>
