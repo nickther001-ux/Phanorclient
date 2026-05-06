@@ -76,7 +76,7 @@ export default function Home() {
       </section>
 
       {/* The Standard */}
-      <section className="py-32 px-6">
+      <section style={{ padding: '8rem 1.5rem' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <motion.div {...fadeIn} style={{ textAlign: 'center', marginBottom: '4rem' }}>
             <h2
@@ -85,12 +85,12 @@ export default function Home() {
             >
               {t('standard_eyebrow')}
             </h2>
-            <p style={{ color: 'rgba(245,245,245,0.65)', maxWidth: '36rem', margin: '0 auto', fontSize: '1rem', fontWeight: 300, lineHeight: 1.75 }}>
+            <p style={{ color: 'rgba(245,245,245,0.65)', maxWidth: '36rem', margin: '0 auto', fontSize: '1rem', fontWeight: 300, lineHeight: 1.75, textAlign: 'center' }}>
               {t('standard_sub')}
             </p>
           </motion.div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: '2rem' }}>
             {features.map(({ icon: Icon, titleKey, descKey }, i) => (
               <motion.div
                 key={i}
