@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+@theme {
+  --color-onyx: #1A1A1A;
+  --color-gold: #C5A059;
+  --color-white: #F5F5F5;
+  --font-headline: 'Bebas Neue', 'Montserrat', sans-serif;
+  --font-body: 'Roboto', sans-serif;
+  --font-sub: 'Montserrat', sans-serif;
+}
+
+:root {
+  --onyx: #1A1A1A;
+  --gold: #C5A059;
+  --white: #F5F5F5;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--onyx);
+}
+
+body {
+  background-color: var(--onyx);
+  color: var(--white);
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+.gold-filter {
+  filter: invert(72%) sepia(43%) saturate(464%) hue-rotate(5deg) brightness(93%) contrast(88%);
+}
+
+.heading-bebas {
+  font-family: 'Bebas Neue', 'Montserrat', sans-serif;
+  letter-spacing: 0.05em;
+}
+
+.heading-mont {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.bg-onyx { background-color: var(--onyx); }
+.bg-gold { background-color: var(--gold); }
+.bg-white { background-color: var(--white); }
+
+.text-onyx { color: var(--onyx); }
+.text-gold { color: var(--gold); }
+.text-white { color: var(--white); }
+
+.border-gold { border-color: var(--gold); }
+.border-onyx { border-color: var(--onyx); }

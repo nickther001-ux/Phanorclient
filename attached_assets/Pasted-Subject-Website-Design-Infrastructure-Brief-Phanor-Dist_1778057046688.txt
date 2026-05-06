@@ -1,0 +1,68 @@
+Subject: Website Design & Infrastructure 
+
+
+
+Brief: Phanor Distribution Inc. & Book Honors
+
+
+
+**Project Goal:** To build a high-performance, "Industrial-Luxury" digital flagship that serves as a strategic distribution hub for B2B (Restaurants/Markets) and B2C (Households) clients. This site must integrate with our automation stack (Vocable/SocialBee) and establish our identity as a vertically integrated meat and seafood empire.
+
+### 1. VISUAL IDENTITY & BRAND AESTHETIC
+
+ * **The Vibe:** "The Architect meets the Industrialist." Clean, authoritative, and premium.
+
+ * **Palette:** * **Primary:** Onyx Black (#1A1A1A)
+
+   * **Accent:** Sovereign Gold (#C5A059) – for the Crown & Bull logo and CTAs.
+
+   * **Text:** Architect White (#F5F5F5).
+
+ * **Typography:** Bold headlines (*Montserrat* or *Bebas Neue*) with clean, professional body text (*Roboto*).
+
+ * **Imagery:** High-contrast, professional photography of premium cuts (marbling), industrial vacuum-sealed packaging, and "Behind the Scenes" of our logistics and farm expansion.
+
+### 2. CORE ARCHITECTURE & FUNCTIONALITY
+
+ * **Client Portal (The Gatekeeper):** * Secure Login/Account creation.
+
+   * **Dual-Interface:** System must detect and display different pricing for B2B (Wholesale/Bulk cases) vs. B2C (Retail Bundles).
+
+   * **One-Click Reorder:** Feature for repeat B2B clients to re-submit their weekly standing orders.
+
+ * **Payment & Logistics:** * Full integration with Stripe/Square.
+
+   * **Zone-Based Shipping:** Automated logic that calculates delivery dates/eligibility based on the user's postal code (Montreal Zones 1-5).
+
+ * **The Smart Inventory Machine:** Real-time stock counts that trigger "Low Stock" alerts to drive urgency.
+
+### 3. THE "PHANOR AI" ASSISTANT (Key Feature)
+
+We require a custom AI widget integrated into the shop:
+
+ * **Consumption Calculator:** Users input guest count and meat type; the AI calculates the exact raw weight needed (accounting for bone/cook loss).
+
+ * **Bundle Generator:** AI suggests a custom "Random Box" based on a user’s specific budget (e.g., "$200 for the month").
+
+### 4. STRATEGIC GROWTH FEATURES (Suggestion 2)
+
+ * **The Sovereign Circle Referral Loop:** A backend system that generates unique referral codes for every account.
+
+   * **B2B:** Referrers earn "Phanor Credits" applied to future invoices.
+
+   * **B2C:** Tiered status (Bronze to Gold) that unlocks permanent discounts and exclusive "Farm Access" cuts.
+
+ * **SMS "Drop" Integration:** A sign-up field for instant text alerts on rare meat arrivals.
+
+### 5. SITE MAP
+
+ 1. **Home:** The "Hero" video of the Crown & Bull seal and the Farm-to-Table mission.
+
+ 2. **The Shop:** Divided into "Sélect Bundles" (B2C) and "Wholesale Cases" (B2B).
+
+ 3. **Book Honors:** A luxury landing page for high-end catering inquiries.
+
+ 4. **The Logistics:** A transparency page explaining the "Phanor Standard" (Packaging & Quality Control).
+
+ 5. **About:** The story of Widler Junior Phanor—8 years of evolution from a single butcher to a multi-channel empire.
+

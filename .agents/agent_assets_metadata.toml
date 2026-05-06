@@ -1,0 +1,32 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "iRWXDVTeyU_2UrZcTRsu-"
+uri = "file://public/images/hero.png"
+type = "image"
+title = "Wagyu beef marbling"
+
+[[generated]]
+id = "GbnhqZRou6E9DaFLSYo-Z"
+uri = "file://public/images/packaging.png"
+type = "image"
+title = "Vacuum sealed meat"
+
+[[generated]]
+id = "EqdATXYbcGPbEuodphH3r"
+uri = "file://public/images/storage.png"
+type = "image"
+title = "Cold storage room"
+
+[[generated]]
+id = "ydNCHmbSJVM7IKGTnnFgQ"
+uri = "file://public/images/seafood.png"
+type = "image"
+title = "King crab and salmon"
+
+[[generated]]
+id = "KNST5Dc-om6_CHRDtW51v"
+uri = "file://public/images/book-honors.png"
+type = "image"
+title = "Luxury catering setup"
