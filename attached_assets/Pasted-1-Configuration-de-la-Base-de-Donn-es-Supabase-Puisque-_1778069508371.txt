@@ -1,0 +1,55 @@
+1. Configuration de la Base de Données (Supabase)
+Puisque tu ne veux pas de frais mensuels, Supabase est parfait pour stocker les produits, les commandes et les membres du "Sovereign Circle".
+
+"Configure une connexion à une base de données Supabase. Crée les tables suivantes :
+
+Products : id, name_fr, name_en, description_fr, description_en, price, stock, image_url.
+
+Orders : id, customer_name, items, total_price, status (pending/paid/cancelled), stripe_session_id.
+
+Users : id, email, referral_code, credits, tier (bronze/silver/gold).
+Utilise les variables d'environnement SUPABASE_URL et SUPABASE_KEY pour la connexion."
+
+2. Intégration Cloudinary (Upload d'images)
+C'est ce qui permettra au client d'ajouter ses photos sans qu'elles disparaissent au redémarrage du serveur Render.
+
+"Intègre l'API Cloudinary dans le formulaire d'ajout de produit de l'Admin.
+
+Quand l'admin sélectionne une image, elle doit être envoyée directement vers Cloudinary.
+
+Une fois l'upload réussi, récupère l'URL de l'image et enregistre-la dans la table 'Products' de Supabase avec les autres informations du produit.
+
+Affiche une barre de progression ou un indicateur de chargement pendant l'upload."
+
+3. Automatisation des Paiements (Stripe Webhooks)
+Pour que l'inventaire se mette à jour tout seul quand une vente est conclue, il faut des "webhooks".
+
+"Configure un point de terminaison Webhook Stripe (/api/webhooks).
+
+Lorsqu'un événement checkout.session.completed est reçu, change le statut de la commande en 'Payé' dans Supabase.
+
+Diminue automatiquement le stock des produits vendus dans la table 'Products'.
+
+Si l'utilisateur est membre du 'Sovereign Circle', calcule et ajoute ses crédits de parrainage basés sur le montant de la commande."
+
+4. Système de Traduction Dynamique (i18next)
+Pour que le site soit "fully bilingual" de manière propre, il faut un système qui gère les fichiers JSON.
+
+"Installe et configure i18next pour la gestion du bilinguisme FR/EN.
+
+Crée un dossier locales avec des fichiers fr.json et en.json.
+
+Automatise le changement de langue pour tout le site, y compris les produits (utilise name_fr quand le site est en français et name_en en anglais).
+
+Ajoute un sélecteur de langue élégant (bouton toggle) dans le header qui mémorise le choix du visiteur."
+
+5. Sécurité de la Page Admin
+On ne veut pas que n'importe qui puisse modifier les prix.
+
+"Sécurise la route /admin.
+
+Crée un écran de connexion simple qui demande un email et un mot de passe.
+
+Utilise bcrypt pour hacher les mots de passe et stocke l'admin dans une table 'Admins' sécurisée.
+
+Utilise des tokens JWT pour maintenir la session active uniquement pour l'administrateur."

@@ -1,5 +1,9 @@
-import { createContext, useContext, useState, ReactNode } from 'react';
-import translations, { Lang, TranslationKey } from '../translations';
+import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import '../i18n';
+import i18n from '../i18n';
+import { TranslationKey } from '../translations';
+
+export type Lang = 'fr' | 'en';
 
 interface LangContextType {
   lang: Lang;
@@ -13,11 +17,28 @@ const LangContext = createContext<LangContextType>({
   t: (key) => key as string,
 });
 
-export function LangProvider({ children }: { children: ReactNode }) {
-  const [lang, setLang] = useState<Lang>('fr');
+function resolvedLang(): Lang {
+  const detected = i18n.language || 'fr';
+  return detected.startsWith('en') ? 'en' : 'fr';
+}
 
-  const t = (key: TranslationKey): string =>
-    (translations[lang] as Record<string, string>)[key] ?? key;
+export function LangProvider({ children }: { children: ReactNode }) {
+  const [lang, setLangState] = useState<Lang>(resolvedLang);
+
+  const setLang = (newLang: Lang) => {
+    i18n.changeLanguage(newLang);
+    setLangState(newLang);
+  };
+
+  useEffect(() => {
+    const onChanged = (lng: string) => {
+      setLangState(lng.startsWith('en') ? 'en' : 'fr');
+    };
+    i18n.on('languageChanged', onChanged);
+    return () => { i18n.off('languageChanged', onChanged); };
+  }, []);
+
+  const t = (key: TranslationKey): string => i18n.t(key);
 
   return (
     <LangContext.Provider value={{ lang, setLang, t }}>

@@ -9,25 +9,34 @@ import Shop from './pages/Shop';
 import BookHonors from './pages/BookHonors';
 import Logistics from './pages/Logistics';
 import About from './pages/About';
+import Admin from './pages/Admin';
 
 function App() {
   return (
     <LangProvider>
       <BrowserRouter>
-        <div className="min-h-screen bg-onyx font-body flex flex-col">
-          <Navbar />
-          <main className="flex-grow" style={{ paddingTop: '5.5rem' }}>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/shop" element={<Shop />} />
-              <Route path="/book-honors" element={<BookHonors />} />
-              <Route path="/logistics" element={<Logistics />} />
-              <Route path="/about" element={<About />} />
-            </Routes>
-          </main>
-          <Footer />
-          <PhanorAI />
-        </div>
+        <Routes>
+          <Route path="/admin" element={<Admin />} />
+          <Route
+            path="*"
+            element={
+              <div className="min-h-screen bg-onyx font-body flex flex-col">
+                <Navbar />
+                <main className="flex-grow" style={{ paddingTop: '5.5rem' }}>
+                  <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/shop" element={<Shop />} />
+                    <Route path="/book-honors" element={<BookHonors />} />
+                    <Route path="/logistics" element={<Logistics />} />
+                    <Route path="/about" element={<About />} />
+                  </Routes>
+                </main>
+                <Footer />
+                <PhanorAI />
+              </div>
+            }
+          />
+        </Routes>
       </BrowserRouter>
     </LangProvider>
   );

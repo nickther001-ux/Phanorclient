@@ -22,6 +22,13 @@ export default defineConfig({
       'Cache-Control': 'no-store, no-cache, must-revalidate',
       'Pragma': 'no-cache',
     },
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3001',
+        changeOrigin: true,
+        secure: false,
+      },
+    },
     watch: {
       ignored: (filePath: string) => {
         const srcDir = path.resolve(__dirname, 'src')
