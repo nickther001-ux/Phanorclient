@@ -24,6 +24,8 @@
 html {
   scroll-behavior: smooth;
   background-color: var(--onyx);
+  /* Momentum-based smooth scrolling on iOS */
+  -webkit-overflow-scrolling: touch;
 }
 
 body {
@@ -33,6 +35,28 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  /* Prevent scroll chaining / bounce at page edges */
+  overscroll-behavior-y: none;
+}
+
+/* GPU-promote the fixed navbar so it never triggers a full repaint on scroll */
+nav[style*="position: fixed"],
+nav {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* GPU-promote all Framer Motion animated elements */
+[style*="will-change"],
+.motion-div {
+  backface-visibility: hidden;
+}
+
+/* Ensure images don't block scroll compositing */
+img {
+  will-change: auto;
+  transform: translateZ(0);
 }
 
 a {
