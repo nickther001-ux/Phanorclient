@@ -30,8 +30,14 @@ export default function Home() {
 
       {/* Hero */}
       <section className="relative h-[100dvh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <img src="/images/hero.png" alt="Wagyu Marbling" className="w-full h-full object-cover opacity-40" />
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <motion.img
+            src="/images/hero.png"
+            alt="Wagyu Marbling"
+            animate={{ scale: [1, 1.07], x: [0, -18] }}
+            transition={{ duration: 14, repeat: Infinity, repeatType: 'reverse', ease: 'easeInOut' }}
+            style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.42, display: 'block', transformOrigin: 'center center' }}
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-onyx via-onyx/50 to-transparent" />
         </div>
         <div className="relative z-10 text-center px-6 max-w-5xl mx-auto flex flex-col items-center">
