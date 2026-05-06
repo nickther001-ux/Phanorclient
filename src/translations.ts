@@ -4,7 +4,7 @@ const translations = {
   fr: {
     nav_home: 'ACCUEIL',
     nav_shop: 'LA BOUTIQUE',
-    nav_bookHonors: 'BOOK HONORS',
+    nav_bookHonors: 'TRAITEUR',
     nav_logistics: 'LOGISTIQUE',
     nav_about: 'À PROPOS',
     nav_order: 'Commander',
@@ -70,8 +70,8 @@ const translations = {
     log_map_sub: 'En développement',
 
     bh_eyebrow: 'Service Traiteur Exclusif',
-    bh_title: 'BOOK',
-    bh_title2: 'HONORS',
+    bh_title: 'TRAITEUR',
+    bh_title2: 'SERVICES',
     bh_sub: "Pour les événements qui exigent l'absolu. Notre division traiteur de luxe transforme la viande de qualité supérieure en une expérience culinaire inoubliable. Mariages, galas d'entreprise, soirées privées.",
     bh_label_name: 'Nom Complet',
     bh_label_company: 'Compagnie (Optionnel)',
@@ -147,7 +147,7 @@ const translations = {
   en: {
     nav_home: 'HOME',
     nav_shop: 'THE SHOP',
-    nav_bookHonors: 'BOOK HONORS',
+    nav_bookHonors: 'CATERING',
     nav_logistics: 'LOGISTICS',
     nav_about: 'ABOUT',
     nav_order: 'Order',
@@ -213,8 +213,8 @@ const translations = {
     log_map_sub: 'In development',
 
     bh_eyebrow: 'Exclusive Catering Service',
-    bh_title: 'BOOK',
-    bh_title2: 'HONORS',
+    bh_title: 'CATERING',
+    bh_title2: 'SERVICES',
     bh_sub: "For events that demand the absolute best. Our luxury catering division transforms premium-quality meat into an unforgettable culinary experience. Weddings, corporate galas, private evenings.",
     bh_label_name: 'Full Name',
     bh_label_company: 'Company (Optional)',
