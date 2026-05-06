@@ -137,40 +137,35 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Sovereign Circle — 2-column grid */}
-      <section style={{ padding: '6rem 1.5rem', background: 'rgba(197,160,89,0.04)', borderTop: '1px solid rgba(197,160,89,0.2)', borderBottom: '1px solid rgba(197,160,89,0.2)' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)',
-              gap: '5rem',
-              alignItems: 'center',
-            }}
-          >
+      {/* Sovereign Circle — strict 2-column */}
+      <section style={{ padding: '6rem 0', background: 'rgba(197,160,89,0.04)', borderTop: '1px solid rgba(197,160,89,0.2)', borderBottom: '1px solid rgba(197,160,89,0.2)' }}>
+        {/* centering wrapper */}
+        <div style={{ width: '100%', maxWidth: '1200px', marginLeft: 'auto', marginRight: 'auto', paddingLeft: '1.5rem', paddingRight: '1.5rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center' }}>
+
             {/* Left: text */}
-            <motion.div {...fadeIn}>
+            <motion.div {...fadeIn} style={{ width: '100%' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-                <Star style={{ color: 'var(--gold)', width: '1.1rem', height: '1.1rem', fill: 'var(--gold)' }} />
-                <span className="heading-mont text-gold" style={{ fontSize: '0.7rem', letterSpacing: '0.25em', textTransform: 'uppercase' }}>
+                <Star style={{ color: 'var(--gold)', width: '1rem', height: '1rem', fill: 'var(--gold)', flexShrink: 0 }} />
+                <span className="heading-mont text-gold" style={{ fontSize: '0.65rem', letterSpacing: '0.25em', textTransform: 'uppercase' }}>
                   {t('circle_eyebrow')}
                 </span>
               </div>
               <h2
                 className="heading-bebas"
-                style={{ fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', lineHeight: 1, marginBottom: '1.5rem' }}
+                style={{ fontSize: 'clamp(2rem, 3.5vw, 3rem)', lineHeight: 1.05, marginBottom: '1.25rem' }}
               >
                 {t('circle_title')}<br />{t('circle_title2')}
               </h2>
-              <p style={{ color: 'rgba(245,245,245,0.72)', fontSize: '1rem', fontWeight: 300, lineHeight: 1.75, marginBottom: '1.5rem', maxWidth: '32rem' }}>
+              <p style={{ color: 'rgba(245,245,245,0.72)', fontSize: '0.9375rem', fontWeight: 300, lineHeight: 1.75, marginBottom: '1.25rem' }}>
                 {t('circle_body')}
               </p>
-              <p style={{ color: 'rgba(245,245,245,0.72)', fontSize: '0.9375rem', fontWeight: 300, lineHeight: 1.75, marginBottom: '0.5rem' }}>
-                <strong style={{ color: 'var(--white)', fontWeight: 400 }}>{t('circle_b2b')}</strong>{' '}
+              <p style={{ color: 'rgba(245,245,245,0.72)', fontSize: '0.9rem', fontWeight: 300, lineHeight: 1.7, marginBottom: '0.5rem' }}>
+                <strong style={{ color: 'var(--white)', fontWeight: 500 }}>{t('circle_b2b')}</strong>{' '}
                 {t('circle_b2b_desc')}
               </p>
-              <p style={{ color: 'rgba(245,245,245,0.72)', fontSize: '0.9375rem', fontWeight: 300, lineHeight: 1.75, marginBottom: '2rem' }}>
-                <strong style={{ color: 'var(--white)', fontWeight: 400 }}>{t('circle_b2c')}</strong>{' '}
+              <p style={{ color: 'rgba(245,245,245,0.72)', fontSize: '0.9rem', fontWeight: 300, lineHeight: 1.7, marginBottom: '2rem' }}>
+                <strong style={{ color: 'var(--white)', fontWeight: 500 }}>{t('circle_b2c')}</strong>{' '}
                 {t('circle_b2c_desc')}
               </p>
               <button
@@ -181,49 +176,31 @@ export default function Home() {
                   fontFamily: 'Bebas Neue, sans-serif',
                   fontSize: '1.1rem',
                   letterSpacing: '0.18em',
-                  padding: '0.75rem 2rem',
+                  padding: '0.7rem 2rem',
                   cursor: 'pointer',
                   transition: 'all 0.25s',
                 }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = 'var(--gold)';
-                  e.currentTarget.style.color = 'var(--onyx)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'transparent';
-                  e.currentTarget.style.color = 'var(--gold)';
-                }}
+                onMouseEnter={(e) => { e.currentTarget.style.background = 'var(--gold)'; e.currentTarget.style.color = 'var(--onyx)'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'var(--gold)'; }}
               >
                 {t('circle_cta')}
               </button>
             </motion.div>
 
             {/* Right: tier cards */}
-            <div style={{ position: 'relative' }}>
+            <div style={{ position: 'relative', width: '100%' }}>
               <img
-                src="/logo.png"
-                alt=""
-                aria-hidden="true"
-                className="gold-filter"
-                style={{
-                  position: 'absolute',
-                  top: '50%',
-                  left: '50%',
-                  transform: 'translate(-50%, -50%)',
-                  height: '80%',
-                  objectFit: 'contain',
-                  opacity: 0.07,
-                  pointerEvents: 'none',
-                }}
+                src="/logo.png" alt="" aria-hidden="true" className="gold-filter"
+                style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', height: '80%', objectFit: 'contain', opacity: 0.07, pointerEvents: 'none' }}
               />
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', position: 'relative', zIndex: 1 }}>
                 {tiers.map(({ key, color }, i) => (
                   <motion.div
                     key={key}
-                    initial={{ opacity: 0, x: 40 }}
+                    initial={{ opacity: 0, x: 30 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: i * 0.15 }}
+                    transition={{ delay: i * 0.12 }}
                     style={{
                       background: 'var(--onyx)',
                       border: '1px solid rgba(255,255,255,0.1)',
@@ -233,99 +210,74 @@ export default function Home() {
                       justifyContent: 'space-between',
                     }}
                   >
-                    <span
-                      className="heading-bebas"
-                      style={{ fontSize: '1.5rem', letterSpacing: '0.12em', color }}
-                    >
-                      {t(key)}
-                    </span>
+                    <span className="heading-bebas" style={{ fontSize: '1.4rem', letterSpacing: '0.1em', color }}>{t(key)}</span>
                     <div style={{ width: '3rem', height: '1px', background: 'rgba(255,255,255,0.15)' }} />
                   </motion.div>
                 ))}
               </div>
             </div>
+
           </div>
         </div>
       </section>
 
-      {/* Secret Cuts SMS — centered */}
+      {/* Secret Cuts SMS — guaranteed center */}
       <section style={{ padding: '7rem 1.5rem' }}>
-        <motion.div
-          {...fadeIn}
-          style={{
-            maxWidth: '680px',
-            margin: '0 auto',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            textAlign: 'center',
-          }}
-        >
-          <h2
-            className="heading-bebas"
-            style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)', letterSpacing: '0.08em', marginBottom: '1.5rem' }}
+        {/* outer flex centers the inner box horizontally */}
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <motion.div
+            {...fadeIn}
+            style={{ width: '100%', maxWidth: '640px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}
           >
-            {t('sms_title')} <span style={{ color: '#ef4444' }}>{t('sms_highlight')}</span>
-          </h2>
-          <p
-            style={{
-              color: 'rgba(245,245,245,0.65)',
-              fontSize: '1rem',
-              fontWeight: 300,
-              lineHeight: 1.75,
-              marginBottom: '2.5rem',
-              maxWidth: '38rem',
-            }}
-          >
-            {t('sms_sub')}
-          </p>
-          <form
-            style={{ display: 'flex', flexWrap: 'wrap', gap: '0', justifyContent: 'center', alignItems: 'stretch', width: '100%', maxWidth: '34rem' }}
-            onSubmit={(e) => e.preventDefault()}
-          >
-            <input
-              type="tel"
-              placeholder={t('sms_placeholder')}
-              style={{
-                background: 'transparent',
-                border: '1px solid rgba(255,255,255,0.25)',
-                borderRight: 'none',
-                padding: '1rem 1.5rem',
-                color: 'var(--white)',
-                outline: 'none',
-                fontSize: '1rem',
-                flex: '1 1 14rem',
-                minWidth: 0,
-                transition: 'border-color 0.2s',
-              }}
-              onFocus={(e) => (e.target.style.borderColor = 'var(--gold)')}
-              onBlur={(e) => {
-                e.target.style.borderColor = 'rgba(255,255,255,0.25)';
-                e.target.style.borderRight = 'none';
-              }}
-            />
-            <button
-              type="submit"
+            <h2
               className="heading-bebas"
-              style={{
-                background: 'var(--gold)',
-                color: 'var(--onyx)',
-                padding: '1rem 2rem',
-                fontSize: '1.2rem',
-                letterSpacing: '0.15em',
-                cursor: 'pointer',
-                border: 'none',
-                flexShrink: 0,
-                transition: 'background 0.25s',
-                whiteSpace: 'nowrap',
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.background = 'var(--white)')}
-              onMouseLeave={(e) => (e.currentTarget.style.background = 'var(--gold)')}
+              style={{ fontSize: 'clamp(2.2rem, 5vw, 3.5rem)', letterSpacing: '0.08em', marginBottom: '1.25rem' }}
             >
-              {t('sms_cta')}
-            </button>
-          </form>
-        </motion.div>
+              {t('sms_title')} <span style={{ color: '#ef4444' }}>{t('sms_highlight')}</span>
+            </h2>
+            <p style={{ color: 'rgba(245,245,245,0.65)', fontSize: '0.9375rem', fontWeight: 300, lineHeight: 1.75, marginBottom: '2.5rem' }}>
+              {t('sms_sub')}
+            </p>
+            <div style={{ display: 'flex', width: '100%', maxWidth: '32rem', alignItems: 'stretch' }}>
+              <input
+                type="tel"
+                placeholder={t('sms_placeholder')}
+                style={{
+                  flex: 1,
+                  background: 'transparent',
+                  border: '1px solid rgba(255,255,255,0.25)',
+                  borderRight: 'none',
+                  padding: '0.875rem 1.25rem',
+                  color: 'var(--white)',
+                  outline: 'none',
+                  fontSize: '0.9375rem',
+                  minWidth: 0,
+                }}
+                onFocus={(e) => (e.target.style.borderColor = 'var(--gold)')}
+                onBlur={(e) => { e.target.style.borderColor = 'rgba(255,255,255,0.25)'; e.target.style.borderRight = 'none'; }}
+              />
+              <button
+                className="heading-bebas"
+                style={{
+                  background: 'var(--gold)',
+                  color: 'var(--onyx)',
+                  padding: '0.875rem 1.5rem',
+                  fontSize: '1.1rem',
+                  letterSpacing: '0.15em',
+                  border: 'none',
+                  cursor: 'pointer',
+                  flexShrink: 0,
+                  whiteSpace: 'nowrap',
+                  transition: 'background 0.25s',
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.background = 'var(--white)')}
+                onMouseLeave={(e) => (e.currentTarget.style.background = 'var(--gold)')}
+              >
+                {t('sms_cta')}
+              </button>
+            </div>
+          </motion.div>
+        </div>
       </section>
 
     </div>
