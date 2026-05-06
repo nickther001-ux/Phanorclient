@@ -117,3 +117,21 @@ button {
   background-color: var(--gold);
   margin-bottom: 1.5rem;
 }
+
+/* Navbar responsive — replaces unreliable Tailwind md: variants */
+.nav-desktop {
+  display: none;
+  align-items: center;
+  gap: 1.75rem;
+}
+.nav-mobile-btn {
+  display: flex;
+}
+@media (min-width: 768px) {
+  .nav-desktop {
+    display: flex;
+  }
+  .nav-mobile-btn {
+    display: none;
+  }
+}

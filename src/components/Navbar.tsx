@@ -27,133 +27,118 @@ export default function Navbar() {
     { key: 'nav_about' as const, path: '/about' },
   ];
 
+  const navStyle: React.CSSProperties = {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    width: '100%',
+    zIndex: 50,
+    transition: 'all 0.3s',
+    ...(scrolled
+      ? { background: 'rgba(26,26,26,0.92)', backdropFilter: 'blur(12px)', padding: '1rem 0', boxShadow: '0 4px 24px rgba(0,0,0,0.4)', borderBottom: '1px solid rgba(197,160,89,0.1)' }
+      : { background: 'transparent', padding: '1.5rem 0' }),
+  };
+
+  const langBtn = (code: 'fr' | 'en'): React.CSSProperties => ({
+    padding: '0.35rem 0.65rem',
+    background: lang === code ? 'var(--gold)' : 'transparent',
+    color: lang === code ? 'var(--onyx)' : 'rgba(197,160,89,0.7)',
+    transition: 'all 0.2s',
+    fontFamily: 'Montserrat, sans-serif',
+    fontSize: '0.7rem',
+    letterSpacing: '0.1em',
+    cursor: 'pointer',
+    border: 'none',
+  });
+
   return (
-    <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-onyx/90 backdrop-blur-md py-4 shadow-lg border-b border-gold/10'
-          : 'bg-transparent py-6'
-      }`}
-    >
-      <div className="container mx-auto px-6 flex justify-between items-center">
+    <nav style={navStyle}>
+      <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-3 group">
-          <img
-            src="/logo.png"
-            alt="Phanor Logo"
-            className="h-10 w-auto gold-filter transition-transform duration-500 group-hover:scale-105"
-          />
-          <div className="flex flex-col">
-            <span className="heading-bebas text-2xl tracking-widest text-gold leading-none">PHANOR</span>
-            <span className="heading-mont text-[0.6rem] tracking-[0.3em] text-white/70 uppercase">
+        <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+          <img src="/logo.png" alt="Phanor Logo" className="gold-filter" style={{ height: '2.5rem', width: 'auto' }} />
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <span className="heading-bebas text-gold" style={{ fontSize: '1.5rem', letterSpacing: '0.15em', lineHeight: 1 }}>PHANOR</span>
+            <span className="heading-mont" style={{ fontSize: '0.55rem', letterSpacing: '0.3em', color: 'rgba(245,245,245,0.6)', textTransform: 'uppercase' }}>
               Distribution Inc.
             </span>
           </div>
         </Link>
 
-        {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-7">
+        {/* Desktop Nav — uses CSS class with @media query */}
+        <div className="nav-desktop">
           {navLinks.map(({ key, path }) => (
             <Link
               key={key}
               to={path}
-              className={`heading-mont text-xs tracking-widest font-medium transition-colors hover:text-gold ${
-                location.pathname === path ? 'text-gold' : 'text-white'
-              }`}
+              className="heading-mont"
+              style={{
+                fontSize: '0.7rem',
+                letterSpacing: '0.18em',
+                fontWeight: 500,
+                color: location.pathname === path ? 'var(--gold)' : 'var(--white)',
+                transition: 'color 0.2s',
+                textTransform: 'uppercase',
+              }}
             >
               {t(key)}
             </Link>
           ))}
 
           {/* FR | EN Toggle */}
-          <div
-            className="heading-mont text-xs tracking-widest font-medium flex items-center border border-gold/40 overflow-hidden"
-            style={{ borderRadius: 0 }}
-          >
-            <button
-              onClick={() => setLang('fr')}
-              style={{
-                padding: '0.35rem 0.65rem',
-                background: lang === 'fr' ? 'var(--gold)' : 'transparent',
-                color: lang === 'fr' ? 'var(--onyx)' : 'rgba(197,160,89,0.7)',
-                transition: 'all 0.2s',
-                fontFamily: 'Montserrat, sans-serif',
-                fontSize: '0.7rem',
-                letterSpacing: '0.1em',
-                cursor: 'pointer',
-                border: 'none',
-              }}
-            >
-              FR
-            </button>
-            <span style={{ color: 'rgba(197,160,89,0.3)', fontSize: '0.6rem' }}>|</span>
-            <button
-              onClick={() => setLang('en')}
-              style={{
-                padding: '0.35rem 0.65rem',
-                background: lang === 'en' ? 'var(--gold)' : 'transparent',
-                color: lang === 'en' ? 'var(--onyx)' : 'rgba(197,160,89,0.7)',
-                transition: 'all 0.2s',
-                fontFamily: 'Montserrat, sans-serif',
-                fontSize: '0.7rem',
-                letterSpacing: '0.1em',
-                cursor: 'pointer',
-                border: 'none',
-              }}
-            >
-              EN
-            </button>
+          <div style={{ display: 'flex', alignItems: 'center', border: '1px solid rgba(197,160,89,0.4)', overflow: 'hidden' }}>
+            <button onClick={() => setLang('fr')} style={langBtn('fr')}>FR</button>
+            <span style={{ color: 'rgba(197,160,89,0.3)', fontSize: '0.6rem', lineHeight: 1 }}>|</span>
+            <button onClick={() => setLang('en')} style={langBtn('en')}>EN</button>
           </div>
 
           <Link
             to="/shop"
-            className="bg-gold text-onyx heading-bebas px-6 py-2 text-xl tracking-wider hover:bg-white transition-colors uppercase"
+            className="heading-bebas bg-gold text-onyx"
+            style={{ padding: '0.5rem 1.5rem', fontSize: '1.1rem', letterSpacing: '0.12em', transition: 'background 0.2s', textTransform: 'uppercase' }}
           >
             {t('nav_order')}
           </Link>
         </div>
 
-        {/* Mobile Toggle */}
-        <button className="md:hidden text-gold" onClick={() => setIsOpen(!isOpen)}>
-          {isOpen ? <X size={32} /> : <Menu size={32} />}
+        {/* Mobile hamburger — uses CSS class with @media query */}
+        <button
+          className="nav-mobile-btn"
+          onClick={() => setIsOpen(!isOpen)}
+          style={{ color: 'var(--gold)', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+        >
+          {isOpen ? <X size={30} /> : <Menu size={30} />}
         </button>
       </div>
 
-      {/* Mobile Nav */}
+      {/* Mobile dropdown */}
       {isOpen && (
-        <div className="absolute top-full left-0 w-full bg-onyx border-b border-gold/20 flex flex-col items-center py-8 gap-6 md:hidden shadow-2xl">
+        <div style={{
+          position: 'absolute', top: '100%', left: 0, width: '100%',
+          background: 'var(--onyx)', borderBottom: '1px solid rgba(197,160,89,0.2)',
+          display: 'flex', flexDirection: 'column', alignItems: 'center',
+          padding: '2rem 0', gap: '1.5rem', boxShadow: '0 8px 32px rgba(0,0,0,0.5)',
+        }}>
           {navLinks.map(({ key, path }) => (
             <Link
               key={key}
               to={path}
-              className={`heading-mont text-lg tracking-widest font-medium ${
-                location.pathname === path ? 'text-gold' : 'text-white'
-              }`}
+              className="heading-mont"
+              style={{ fontSize: '1rem', letterSpacing: '0.2em', fontWeight: 500, textTransform: 'uppercase', color: location.pathname === path ? 'var(--gold)' : 'var(--white)' }}
             >
               {t(key)}
             </Link>
           ))}
-
-          {/* Mobile FR|EN */}
-          <div className="flex items-center gap-4 heading-mont text-sm tracking-widest">
-            <button
-              onClick={() => setLang('fr')}
-              style={{ color: lang === 'fr' ? 'var(--gold)' : 'rgba(245,245,245,0.5)', cursor: 'pointer', border: 'none', background: 'none', fontFamily: 'Montserrat, sans-serif', letterSpacing: '0.15em' }}
-            >
-              FR
-            </button>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+            <button onClick={() => setLang('fr')} style={{ ...langBtn('fr'), background: 'none', fontSize: '0.85rem' }}>FR</button>
             <span style={{ color: 'rgba(197,160,89,0.3)' }}>|</span>
-            <button
-              onClick={() => setLang('en')}
-              style={{ color: lang === 'en' ? 'var(--gold)' : 'rgba(245,245,245,0.5)', cursor: 'pointer', border: 'none', background: 'none', fontFamily: 'Montserrat, sans-serif', letterSpacing: '0.15em' }}
-            >
-              EN
-            </button>
+            <button onClick={() => setLang('en')} style={{ ...langBtn('en'), background: 'none', fontSize: '0.85rem' }}>EN</button>
           </div>
-
           <Link
             to="/shop"
-            className="bg-gold text-onyx heading-bebas px-8 py-3 text-2xl tracking-wider mt-2"
+            className="heading-bebas bg-gold text-onyx"
+            style={{ padding: '0.75rem 2.5rem', fontSize: '1.4rem', letterSpacing: '0.12em' }}
           >
             {t('nav_order')}
           </Link>
