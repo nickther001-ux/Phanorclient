@@ -19,7 +19,7 @@ export default defineConfig({
     port: 5000,
     allowedHosts: true,
     watch: {
-      ignored: ['**/.local/**', '**/node_modules/**', '**/dist/**'],
+      ignored: ['**/.local/**', '**/node_modules/**', '**/dist/**', '**/*.tsbuildinfo'],
     },
   },
   preview: {
