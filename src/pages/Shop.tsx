@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ShoppingCart, AlertCircle } from 'lucide-react';
+import { ShoppingCart, AlertCircle, Home, Building2 } from 'lucide-react';
 import { useLang } from '../context/LangContext';
 
 const B2C_PRODUCTS = [
@@ -37,45 +37,63 @@ export default function Shop() {
             {t('shop_title')} <span className="text-gold">{t('shop_highlight')}</span>
           </motion.h1>
 
-          <div style={{ display: 'flex', border: '1px solid rgba(197,160,89,0.3)', padding: '0.25rem', background: 'rgba(255,255,255,0.04)', position: 'relative' }}>
-            <div
-              style={{
-                position: 'absolute', top: '0.25rem', bottom: '0.25rem',
-                width: 'calc(50% - 4px)',
-                background: 'var(--gold)',
-                transition: 'left 0.3s',
-                left: mode === 'b2c' ? '0.25rem' : 'calc(50% + 2px)',
-                zIndex: 0,
-              }}
-            />
-            <button
-              onClick={() => setMode('b2c')}
-              className="heading-bebas"
-              style={{
-                position: 'relative', zIndex: 1,
-                padding: '0.75rem 2rem',
-                fontSize: '1.1rem',
-                letterSpacing: '0.1em',
-                color: mode === 'b2c' ? 'var(--onyx)' : 'rgba(245,245,245,0.65)',
-                background: 'none', border: 'none', cursor: 'pointer', transition: 'color 0.3s',
-              }}
-            >
-              {t('shop_b2c_btn')}
-            </button>
-            <button
-              onClick={() => setMode('b2b')}
-              className="heading-bebas"
-              style={{
-                position: 'relative', zIndex: 1,
-                padding: '0.75rem 2rem',
-                fontSize: '1.1rem',
-                letterSpacing: '0.1em',
-                color: mode === 'b2b' ? 'var(--onyx)' : 'rgba(245,245,245,0.65)',
-                background: 'none', border: 'none', cursor: 'pointer', transition: 'color 0.3s',
-              }}
-            >
-              {t('shop_b2b_btn')}
-            </button>
+          {/* Visual mode selector cards */}
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', width: '100%', maxWidth: '52rem' }}>
+            {([
+              { key: 'b2c' as const, img: '/images/packaging.png', Icon: Home, btnKey: 'shop_b2c_btn' as const, tagKey: 'shop_b2c_tag' as const, subKey: 'shop_b2c_sub' as const },
+              { key: 'b2b' as const, img: '/images/storage.png',   Icon: Building2, btnKey: 'shop_b2b_btn' as const, tagKey: 'shop_b2b_tag' as const, subKey: 'shop_b2b_sub' as const },
+            ]).map(({ key, img, Icon, btnKey, tagKey, subKey }) => {
+              const active = mode === key;
+              return (
+                <button
+                  key={key}
+                  onClick={() => setMode(key)}
+                  style={{
+                    position: 'relative', overflow: 'hidden', height: '9rem',
+                    border: active ? '2px solid var(--gold)' : '2px solid rgba(197,160,89,0.2)',
+                    background: 'none', cursor: 'pointer', padding: 0,
+                    transition: 'border-color 0.3s',
+                    outline: 'none',
+                  }}
+                >
+                  {/* Background image */}
+                  <img
+                    src={img} alt=""
+                    style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: active ? 0.35 : 0.15, transition: 'opacity 0.4s' }}
+                  />
+                  {/* Dark overlay */}
+                  <div style={{ position: 'absolute', inset: 0, background: active ? 'rgba(26,26,26,0.55)' : 'rgba(26,26,26,0.78)', transition: 'background 0.4s' }} />
+
+                  {/* Gold bottom bar when active */}
+                  {active && <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '3px', background: 'var(--gold)' }} />}
+
+                  {/* Content */}
+                  <div style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%', gap: '0.5rem', padding: '1rem' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                      <Icon size={18} style={{ color: active ? 'var(--gold)' : 'rgba(197,160,89,0.5)', transition: 'color 0.3s' }} />
+                      <span
+                        className="heading-mont"
+                        style={{ fontSize: '0.6rem', letterSpacing: '0.25em', color: active ? 'var(--gold)' : 'rgba(197,160,89,0.5)', textTransform: 'uppercase', transition: 'color 0.3s' }}
+                      >
+                        {t(tagKey)}
+                      </span>
+                    </div>
+                    <span
+                      className="heading-bebas"
+                      style={{ fontSize: '1.5rem', letterSpacing: '0.1em', color: active ? 'var(--white)' : 'rgba(245,245,245,0.45)', transition: 'color 0.3s', lineHeight: 1 }}
+                    >
+                      {t(btnKey)}
+                    </span>
+                    <span
+                      className="heading-mont"
+                      style={{ fontSize: '0.7rem', letterSpacing: '0.1em', color: active ? 'rgba(245,245,245,0.7)' : 'rgba(245,245,245,0.3)', transition: 'color 0.3s' }}
+                    >
+                      {t(subKey)}
+                    </span>
+                  </div>
+                </button>
+              );
+            })}
           </div>
         </div>
 

@@ -108,8 +108,12 @@ const translations = {
 
     shop_title: 'LA BOUTIQUE',
     shop_highlight: 'SOUVERAINE',
-    shop_b2c_btn: 'Sélect Bundles (B2C)',
-    shop_b2b_btn: 'Grossistes (B2B)',
+    shop_b2c_btn: 'Sélect Bundles',
+    shop_b2c_tag: 'B2C',
+    shop_b2c_sub: 'Foyers & particuliers',
+    shop_b2b_btn: 'Grossistes',
+    shop_b2b_tag: 'B2B',
+    shop_b2b_sub: 'Restaurants & marchés',
     shop_add: 'Ajouter',
     shop_low_stock: 'FAIBLE STOCK',
 
@@ -247,8 +251,12 @@ const translations = {
 
     shop_title: 'THE SHOP',
     shop_highlight: 'SOVEREIGN',
-    shop_b2c_btn: 'Select Bundles (B2C)',
-    shop_b2b_btn: 'Wholesale Cases (B2B)',
+    shop_b2c_btn: 'Select Bundles',
+    shop_b2c_tag: 'B2C',
+    shop_b2c_sub: 'Households & individuals',
+    shop_b2b_btn: 'Wholesale Cases',
+    shop_b2b_tag: 'B2B',
+    shop_b2b_sub: 'Restaurants & markets',
     shop_add: 'Add',
     shop_low_stock: 'LOW STOCK',
 
