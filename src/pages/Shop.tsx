@@ -69,24 +69,15 @@ export default function Shop() {
 
                   {/* Content */}
                   <div style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%', gap: '0.5rem', padding: '1rem' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                      <Icon size={18} style={{ color: active ? 'var(--gold)' : 'rgba(197,160,89,0.5)', transition: 'color 0.3s' }} />
-                      <span
-                        className="heading-mont"
-                        style={{ fontSize: '0.6rem', letterSpacing: '0.25em', color: active ? 'var(--gold)' : 'rgba(197,160,89,0.5)', textTransform: 'uppercase', transition: 'color 0.3s' }}
-                      >
-                        {t(tagKey)}
-                      </span>
-                    </div>
                     <span
                       className="heading-bebas"
-                      style={{ fontSize: '1.5rem', letterSpacing: '0.1em', color: active ? 'var(--white)' : 'rgba(245,245,245,0.45)', transition: 'color 0.3s', lineHeight: 1 }}
+                      style={{ fontSize: '1.75rem', letterSpacing: '0.12em', color: active ? 'var(--white)' : 'rgba(245,245,245,0.45)', transition: 'color 0.3s', lineHeight: 1 }}
                     >
                       {t(btnKey)}
                     </span>
                     <span
                       className="heading-mont"
-                      style={{ fontSize: '0.7rem', letterSpacing: '0.1em', color: active ? 'rgba(245,245,245,0.7)' : 'rgba(245,245,245,0.3)', transition: 'color 0.3s' }}
+                      style={{ fontSize: '0.7rem', letterSpacing: '0.12em', color: active ? 'rgba(245,245,245,0.7)' : 'rgba(245,245,245,0.3)', transition: 'color 0.3s' }}
                     >
                       {t(subKey)}
                     </span>
