@@ -123,8 +123,19 @@ export default function Home() {
       {/* Parallax break */}
       <section className="h-[60vh] relative overflow-hidden">
         <div className="absolute inset-0">
-          <img src="/images/storage.png" alt="Cold Storage" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-onyx/40" />
+          <img
+            src="/images/coldroom.png"
+            alt="Cold Storage"
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              objectPosition: 'center 30%',
+              imageRendering: 'auto',
+              display: 'block',
+            }}
+          />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(26,26,26,0.35) 0%, rgba(26,26,26,0.55) 100%)' }} />
         </div>
         <div className="absolute inset-0 flex items-center justify-center">
           <motion.h2
