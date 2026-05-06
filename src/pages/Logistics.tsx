@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Truck, ThermometerSnowflake, PackageCheck, Clock } from 'lucide-react';
+import { Truck, ThermometerSnowflake, PackageCheck, Clock, MapPin } from 'lucide-react';
 
 export default function Logistics() {
   return (
