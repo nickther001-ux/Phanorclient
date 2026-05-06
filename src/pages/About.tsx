@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import { useLang } from '../context/LangContext';
-
 export default function About() {
   const { t } = useLang();
 
@@ -90,7 +89,10 @@ export default function About() {
               </p>
 
               {/* Stats */}
-              <div className="stats-grid" style={{
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(3, 1fr)',
+                gap: '1.5rem',
                 marginTop: '3.5rem',
                 paddingTop: '2.5rem',
                 borderTop: '1px solid rgba(255,255,255,0.1)',

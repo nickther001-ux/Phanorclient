@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, Star, Shield, TrendingUp, Droplets } from 'lucide-react';
 import { useLang } from '../context/LangContext';
+import { useWindowSize } from '../hooks/useWindowSize';
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
@@ -12,6 +13,7 @@ const fadeIn = {
 
 export default function Home() {
   const { t } = useLang();
+  const { isMobile, isTablet } = useWindowSize();
 
   const features = [
     { icon: Shield, titleKey: 'feat1_title' as const, descKey: 'feat1_desc' as const },
@@ -100,7 +102,7 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <div className="features-grid">
+          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, minmax(0, 1fr))', gap: isMobile ? '1.25rem' : '2rem' }}>
             {features.map(({ icon: Icon, titleKey, descKey }, i) => (
               <motion.div
                 key={i}
@@ -162,7 +164,7 @@ export default function Home() {
       <section style={{ padding: '6rem 0', background: 'rgba(197,160,89,0.04)', borderTop: '1px solid rgba(197,160,89,0.2)', borderBottom: '1px solid rgba(197,160,89,0.2)' }}>
         {/* centering wrapper */}
         <div style={{ width: '100%', maxWidth: '1200px', marginLeft: 'auto', marginRight: 'auto', paddingLeft: '1.5rem', paddingRight: '1.5rem' }}>
-          <div className="circle-grid" style={{ alignItems: 'center' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: isTablet ? '1fr' : '1fr 1fr', gap: isTablet ? '2.5rem' : '4rem', alignItems: 'center' }}>
 
             {/* Left: text */}
             <motion.div {...fadeIn} style={{ width: '100%' }}>

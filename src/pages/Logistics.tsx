@@ -2,9 +2,11 @@ import { motion } from 'framer-motion';
 import { Truck, ThermometerSnowflake, PackageCheck, Clock } from 'lucide-react';
 import { useLang } from '../context/LangContext';
 import DeliveryMap from '../components/DeliveryMap';
+import { useWindowSize } from '../hooks/useWindowSize';
 
 export default function Logistics() {
   const { t } = useLang();
+  const { isMobile, isTablet } = useWindowSize();
 
   const pillars = [
     { icon: ThermometerSnowflake, titleKey: 'log_p1_title' as const, descKey: 'log_p1_desc' as const },
@@ -68,7 +70,7 @@ export default function Logistics() {
         </div>
 
         {/* Four pillars — equal 4-column grid, centered */}
-        <div className="pillars-grid" style={{ marginBottom: '5rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr 1fr' : 'repeat(4, minmax(0, 1fr))', gap: isMobile ? '1rem' : '1.5rem', marginBottom: '5rem' }}>
           {pillars.map(({ icon: Icon, titleKey, descKey }, i) => (
             <motion.div
               key={i}
@@ -105,11 +107,13 @@ export default function Logistics() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="logistics-zone-grid"
           style={{
+            display: 'grid',
+            gridTemplateColumns: isTablet ? '1fr' : '1fr 1fr',
+            gap: isTablet ? '2rem' : '3rem',
             background: 'rgba(255,255,255,0.04)',
             border: '1px solid rgba(197,160,89,0.25)',
-            padding: '2rem',
+            padding: isTablet ? '1.5rem' : '3.5rem',
             alignItems: 'start',
           }}
         >

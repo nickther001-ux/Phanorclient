@@ -1,8 +1,10 @@
 import { motion } from 'framer-motion';
 import { useLang } from '../context/LangContext';
+import { useWindowSize } from '../hooks/useWindowSize';
 
 export default function BookHonors() {
   const { t } = useLang();
+  const { isMobile } = useWindowSize();
 
   return (
     <div className="bg-onyx text-white min-h-screen relative overflow-hidden">
@@ -63,7 +65,7 @@ export default function BookHonors() {
               }}
               onSubmit={(e) => e.preventDefault()}
             >
-              <div className="form-row-2" style={{ marginBottom: '1.75rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: isMobile ? '1rem' : '1.75rem', marginBottom: '1.75rem' }}>
                 <div>
                   <label className="form-label">{t('bh_label_name')}</label>
                   <input type="text" className="form-input" />
@@ -82,7 +84,7 @@ export default function BookHonors() {
                 </div>
               </div>
 
-              <div className="form-row-3" style={{ marginBottom: '1.75rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr 1fr', gap: isMobile ? '1rem' : '1.75rem', marginBottom: '1.75rem' }}>
                 <div>
                   <label className="form-label">{t('bh_label_type')}</label>
                   <select className="form-input" style={{ background: 'var(--onyx)', cursor: 'pointer' }}>

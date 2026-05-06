@@ -63,7 +63,7 @@ Premium meat & seafood distribution digital flagship for B2B (restaurants/market
 - Logo: `/public/logo.png` → import as `/logo.png` in React
 - Port 5000 required for Replit webview; API on 3001 (never exposed directly)
 - Tailwind v4: `@import "tailwindcss"` syntax (not v3 directives)
-- Tailwind v4 responsive utilities (`md:flex`) unreliable — use explicit CSS `@media` in `index.css` or inline `style={{}}`
+- Tailwind v4 responsive utilities (`md:flex`) unreliable AND custom CSS classes in `index.css` also fail to override — use `useWindowSize` hook (`src/hooks/useWindowSize.ts`) for all responsive layouts via inline `style={{}}` driven by `isMobile` / `isTablet` booleans
 - tsconfig.json `"include": ["src"]` only — server files typed by tsx at runtime, not tsc build
 - pg requires `ssl: { rejectUnauthorized: false }` for Replit's hosted PostgreSQL
 
