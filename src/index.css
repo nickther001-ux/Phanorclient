@@ -75,3 +75,45 @@ button {
 
 .border-gold { border-color: var(--gold); }
 .border-onyx { border-color: var(--onyx); }
+
+/* Fixed navbar clearance — navbar is ~88px (py-6 + h-10 logo) */
+.page-top {
+  padding-top: 7rem; /* 112px — clears the fixed nav with breathing room */
+}
+
+/* High-contrast form labels */
+.form-label {
+  display: block;
+  color: rgba(245, 245, 245, 0.80);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+/* Gold-tinted input borders */
+.form-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(197, 160, 89, 0.45);
+  padding: 0.625rem 0;
+  color: var(--white);
+  outline: none;
+  transition: border-color 0.2s;
+  color-scheme: dark;
+}
+.form-input:focus {
+  border-bottom-color: var(--gold);
+}
+
+/* Gold rule divider */
+.gold-rule {
+  display: block;
+  width: 4rem;
+  height: 1px;
+  background-color: var(--gold);
+  margin-bottom: 1.5rem;
+}

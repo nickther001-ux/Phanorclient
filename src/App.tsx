@@ -14,7 +14,7 @@ function App() {
     <BrowserRouter>
       <div className="min-h-screen bg-onyx font-body flex flex-col">
         <Navbar />
-        <main className="flex-grow">
+        <main className="flex-grow" style={{ paddingTop: '5.5rem' }}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/shop" element={<Shop />} />
