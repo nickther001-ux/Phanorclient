@@ -143,8 +143,8 @@ export default function Home() {
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-              gap: '4rem',
+              gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)',
+              gap: '5rem',
               alignItems: 'center',
             }}
           >
@@ -250,59 +250,82 @@ export default function Home() {
 
       {/* Secret Cuts SMS — centered */}
       <section style={{ padding: '7rem 1.5rem' }}>
-        <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
-          <motion.div {...fadeIn}>
-            <h2
+        <motion.div
+          {...fadeIn}
+          style={{
+            maxWidth: '680px',
+            margin: '0 auto',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            textAlign: 'center',
+          }}
+        >
+          <h2
+            className="heading-bebas"
+            style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)', letterSpacing: '0.08em', marginBottom: '1.5rem' }}
+          >
+            {t('sms_title')} <span style={{ color: '#ef4444' }}>{t('sms_highlight')}</span>
+          </h2>
+          <p
+            style={{
+              color: 'rgba(245,245,245,0.65)',
+              fontSize: '1rem',
+              fontWeight: 300,
+              lineHeight: 1.75,
+              marginBottom: '2.5rem',
+              maxWidth: '38rem',
+            }}
+          >
+            {t('sms_sub')}
+          </p>
+          <form
+            style={{ display: 'flex', flexWrap: 'wrap', gap: '0', justifyContent: 'center', alignItems: 'stretch', width: '100%', maxWidth: '34rem' }}
+            onSubmit={(e) => e.preventDefault()}
+          >
+            <input
+              type="tel"
+              placeholder={t('sms_placeholder')}
+              style={{
+                background: 'transparent',
+                border: '1px solid rgba(255,255,255,0.25)',
+                borderRight: 'none',
+                padding: '1rem 1.5rem',
+                color: 'var(--white)',
+                outline: 'none',
+                fontSize: '1rem',
+                flex: '1 1 14rem',
+                minWidth: 0,
+                transition: 'border-color 0.2s',
+              }}
+              onFocus={(e) => (e.target.style.borderColor = 'var(--gold)')}
+              onBlur={(e) => {
+                e.target.style.borderColor = 'rgba(255,255,255,0.25)';
+                e.target.style.borderRight = 'none';
+              }}
+            />
+            <button
+              type="submit"
               className="heading-bebas"
-              style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)', letterSpacing: '0.08em', marginBottom: '1.5rem' }}
+              style={{
+                background: 'var(--gold)',
+                color: 'var(--onyx)',
+                padding: '1rem 2rem',
+                fontSize: '1.2rem',
+                letterSpacing: '0.15em',
+                cursor: 'pointer',
+                border: 'none',
+                flexShrink: 0,
+                transition: 'background 0.25s',
+                whiteSpace: 'nowrap',
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.background = 'var(--white)')}
+              onMouseLeave={(e) => (e.currentTarget.style.background = 'var(--gold)')}
             >
-              {t('sms_title')} <span style={{ color: '#ef4444' }}>{t('sms_highlight')}</span>
-            </h2>
-            <p style={{ color: 'rgba(245,245,245,0.65)', fontSize: '1rem', fontWeight: 300, lineHeight: 1.75, marginBottom: '3rem', maxWidth: '36rem', margin: '0 auto 3rem' }}>
-              {t('sms_sub')}
-            </p>
-            <form
-              style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'center', alignItems: 'stretch' }}
-              onSubmit={(e) => e.preventDefault()}
-            >
-              <input
-                type="tel"
-                placeholder={t('sms_placeholder')}
-                style={{
-                  background: 'transparent',
-                  border: '1px solid rgba(255,255,255,0.25)',
-                  padding: '1rem 1.5rem',
-                  color: 'var(--white)',
-                  outline: 'none',
-                  fontSize: '1rem',
-                  width: '100%',
-                  maxWidth: '22rem',
-                  transition: 'border-color 0.2s',
-                }}
-                onFocus={(e) => (e.target.style.borderColor = 'var(--gold)')}
-                onBlur={(e) => (e.target.style.borderColor = 'rgba(255,255,255,0.25)')}
-              />
-              <button
-                type="submit"
-                className="heading-bebas"
-                style={{
-                  background: 'var(--white)',
-                  color: 'var(--onyx)',
-                  padding: '1rem 2.5rem',
-                  fontSize: '1.3rem',
-                  letterSpacing: '0.15em',
-                  cursor: 'pointer',
-                  border: 'none',
-                  transition: 'background 0.25s',
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.background = 'var(--gold)')}
-                onMouseLeave={(e) => (e.currentTarget.style.background = 'var(--white)')}
-              >
-                {t('sms_cta')}
-              </button>
-            </form>
-          </motion.div>
-        </div>
+              {t('sms_cta')}
+            </button>
+          </form>
+        </motion.div>
       </section>
 
     </div>
