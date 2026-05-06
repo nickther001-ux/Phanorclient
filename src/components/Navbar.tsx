@@ -130,10 +130,10 @@ export default function Navbar() {
               {t(key)}
             </Link>
           ))}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-            <button onClick={() => setLang('fr')} style={{ ...langBtn('fr'), background: 'none', fontSize: '0.85rem' }}>FR</button>
-            <span style={{ color: 'rgba(197,160,89,0.3)' }}>|</span>
-            <button onClick={() => setLang('en')} style={{ ...langBtn('en'), background: 'none', fontSize: '0.85rem' }}>EN</button>
+          <div style={{ display: 'flex', alignItems: 'center', border: '1px solid rgba(197,160,89,0.4)', overflow: 'hidden' }}>
+            <button onClick={() => setLang('fr')} style={{ ...langBtn('fr'), fontSize: '0.85rem', padding: '0.5rem 1rem' }}>FR</button>
+            <span style={{ color: 'rgba(197,160,89,0.3)', fontSize: '0.6rem', lineHeight: 1 }}>|</span>
+            <button onClick={() => setLang('en')} style={{ ...langBtn('en'), fontSize: '0.85rem', padding: '0.5rem 1rem' }}>EN</button>
           </div>
           <Link
             to="/shop"
