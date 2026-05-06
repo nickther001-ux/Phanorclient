@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
-import { Truck, ThermometerSnowflake, PackageCheck, Clock, MapPin } from 'lucide-react';
+import { Truck, ThermometerSnowflake, PackageCheck, Clock } from 'lucide-react';
 import { useLang } from '../context/LangContext';
+import DeliveryMap from '../components/DeliveryMap';
 
 export default function Logistics() {
   const { t } = useLang();
@@ -166,33 +167,9 @@ export default function Logistics() {
             </ul>
           </div>
 
-          {/* Right: map placeholder — vertically aligned to top of title */}
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <div
-              style={{
-                aspectRatio: '1',
-                border: '1px solid rgba(197,160,89,0.2)',
-                background: 'rgba(255,255,255,0.02)',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '1rem',
-                padding: '2rem',
-                width: '100%',
-              }}
-            >
-              <MapPin style={{ color: 'var(--gold)', width: '3rem', height: '3rem', opacity: 0.65 }} />
-              <p
-                className="heading-bebas text-gold"
-                style={{ letterSpacing: '0.15em', textTransform: 'uppercase', fontSize: '0.9rem', opacity: 0.6 }}
-              >
-                {t('log_map_title')}
-              </p>
-              <p style={{ color: 'rgba(245,245,245,0.35)', fontSize: '0.75rem', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
-                {t('log_map_sub')}
-              </p>
-            </div>
+          {/* Right: interactive delivery map */}
+          <div style={{ display: 'flex', flexDirection: 'column', minHeight: '420px' }}>
+            <DeliveryMap />
           </div>
         </motion.div>
 

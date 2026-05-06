@@ -14,6 +14,7 @@ Premium meat & seafood distribution digital flagship for B2B (restaurants/market
 - Lucide React (icons)
 - Tailwind CSS v4 (configured via vite plugin)
 - Google Fonts: Bebas Neue, Montserrat, Roboto
+- Leaflet + react-leaflet v4 (interactive delivery map, CartoDB Dark Matter tiles)
 
 ## Where things live
 - `src/App.tsx` — router entry point, wraps tree in `<LangProvider>`
@@ -38,7 +39,7 @@ Premium meat & seafood distribution digital flagship for B2B (restaurants/market
 - **Home** — cinematic hero, Phanor Standard 3-column features, Sovereign Circle 2-col referral grid, SMS Drop signup (centered)
 - **Shop** — toggleable B2C bundles / B2B wholesale cases with FAIBLE STOCK badges
 - **Book Honors** — luxury catering inquiry form (gold borders, high-contrast labels)
-- **Logistics** — cold chain 4-column pillars, 50/50 CSS grid zones + map placeholder
+- **Logistics** — cold chain 4-column pillars, 50/50 CSS grid zones + live react-leaflet map (CartoDB dark tiles, 5 zone CircleMarkers, scroll-zoom disabled)
 - **About** — Widler Junior Phanor origin story, stats row, sticky visual column
 - **Phanor AI Widget** — floating consumption calculator + bundle generator
 
