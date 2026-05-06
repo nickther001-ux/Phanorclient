@@ -1,10 +1,13 @@
 import { motion } from 'framer-motion';
+import { useLang } from '../context/LangContext';
 
 export default function BookHonors() {
+  const { t } = useLang();
+
   return (
     <div className="bg-onyx text-white min-h-screen relative overflow-hidden">
 
-      {/* Background image — right side panel */}
+      {/* Background image */}
       <div className="absolute top-0 right-0 w-1/2 h-full z-0 pointer-events-none">
         <img
           src="/images/book-honors.png"
@@ -19,7 +22,7 @@ export default function BookHonors() {
       </div>
 
       <div className="page-top" style={{ paddingBottom: '7rem' }}>
-        <div className="container mx-auto px-6 relative z-10">
+        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 1.5rem', position: 'relative', zIndex: 10 }}>
           <div style={{ maxWidth: '48rem', margin: '0 auto' }}>
 
             {/* Header */}
@@ -31,37 +34,19 @@ export default function BookHonors() {
             >
               <p
                 className="heading-mont text-gold"
-                style={{
-                  fontSize: '0.7rem',
-                  letterSpacing: '0.32em',
-                  textTransform: 'uppercase',
-                  marginBottom: '1.25rem',
-                }}
+                style={{ fontSize: '0.7rem', letterSpacing: '0.32em', textTransform: 'uppercase', marginBottom: '1.25rem' }}
               >
-                Service Traiteur Exclusif
+                {t('bh_eyebrow')}
               </p>
               <h1
                 className="heading-bebas"
-                style={{
-                  fontSize: 'clamp(2.5rem, 6vw, 4rem)',
-                  lineHeight: 1,
-                  letterSpacing: '0.06em',
-                  marginBottom: '1.25rem',
-                }}
+                style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)', lineHeight: 1, letterSpacing: '0.06em', marginBottom: '1.25rem' }}
               >
-                BOOK<br />HONORS
+                {t('bh_title')}<br />{t('bh_title2')}
               </h1>
               <span className="gold-rule" />
-              <p
-                style={{
-                  color: 'rgba(245,245,245,0.75)',
-                  fontSize: '1rem',
-                  fontWeight: 300,
-                  lineHeight: 1.75,
-                  maxWidth: '34rem',
-                }}
-              >
-                Pour les événements qui exigent l'absolu. Notre division traiteur de luxe transforme la viande de qualité supérieure en une expérience culinaire inoubliable. Mariages, galas d'entreprise, soirées privées.
+              <p style={{ color: 'rgba(245,245,245,0.75)', fontSize: '1rem', fontWeight: 300, lineHeight: 1.75, maxWidth: '34rem' }}>
+                {t('bh_sub')}
               </p>
             </motion.div>
 
@@ -78,92 +63,58 @@ export default function BookHonors() {
               }}
               onSubmit={(e) => e.preventDefault()}
             >
-              {/* Row 1 */}
-              <div
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(2, 1fr)',
-                  gap: '1.75rem',
-                  marginBottom: '1.75rem',
-                }}
-              >
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.75rem', marginBottom: '1.75rem' }}>
                 <div>
-                  <label className="form-label">Nom Complet</label>
+                  <label className="form-label">{t('bh_label_name')}</label>
                   <input type="text" className="form-input" />
                 </div>
                 <div>
-                  <label className="form-label">Compagnie (Optionnel)</label>
+                  <label className="form-label">{t('bh_label_company')}</label>
                   <input type="text" className="form-input" />
                 </div>
                 <div>
-                  <label className="form-label">Courriel</label>
+                  <label className="form-label">{t('bh_label_email')}</label>
                   <input type="email" className="form-input" />
                 </div>
                 <div>
-                  <label className="form-label">Téléphone</label>
+                  <label className="form-label">{t('bh_label_phone')}</label>
                   <input type="tel" className="form-input" />
                 </div>
               </div>
 
-              {/* Row 2 */}
-              <div
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(3, 1fr)',
-                  gap: '1.75rem',
-                  marginBottom: '1.75rem',
-                }}
-              >
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '1.75rem', marginBottom: '1.75rem' }}>
                 <div>
-                  <label className="form-label">Type d'Événement</label>
-                  <select
-                    className="form-input"
-                    style={{
-                      background: 'var(--onyx)',
-                      cursor: 'pointer',
-                    }}
-                  >
-                    <option>Corporatif</option>
-                    <option>Mariage</option>
-                    <option>Privé</option>
-                    <option>Autre</option>
+                  <label className="form-label">{t('bh_label_type')}</label>
+                  <select className="form-input" style={{ background: 'var(--onyx)', cursor: 'pointer' }}>
+                    <option>{t('bh_type_corp')}</option>
+                    <option>{t('bh_type_wedding')}</option>
+                    <option>{t('bh_type_private')}</option>
+                    <option>{t('bh_type_other')}</option>
                   </select>
                 </div>
                 <div>
-                  <label className="form-label">Invités (approx.)</label>
+                  <label className="form-label">{t('bh_label_guests')}</label>
                   <input type="number" className="form-input" />
                 </div>
                 <div>
-                  <label className="form-label">Date Prévue</label>
+                  <label className="form-label">{t('bh_label_date')}</label>
                   <input type="date" className="form-input" />
                 </div>
               </div>
 
-              {/* Message */}
               <div style={{ marginBottom: '2rem' }}>
-                <label className="form-label">Détails de l'expérience souhaitée</label>
-                <textarea
-                  rows={4}
-                  className="form-input"
-                  style={{ resize: 'none' }}
-                />
+                <label className="form-label">{t('bh_label_details')}</label>
+                <textarea rows={4} className="form-input" style={{ resize: 'none' }} />
               </div>
 
-              {/* Submit */}
               <button
                 type="submit"
                 className="heading-bebas bg-gold text-onyx"
-                style={{
-                  width: '100%',
-                  padding: '1rem',
-                  fontSize: '1.2rem',
-                  letterSpacing: '0.18em',
-                  transition: 'background 0.3s',
-                }}
+                style={{ width: '100%', padding: '1rem', fontSize: '1.2rem', letterSpacing: '0.18em', transition: 'background 0.3s', border: 'none', cursor: 'pointer' }}
                 onMouseEnter={(e) => (e.currentTarget.style.background = 'var(--white)')}
                 onMouseLeave={(e) => (e.currentTarget.style.background = 'var(--gold)')}
               >
-                SOUMETTRE LA REQUÊTE
+                {t('bh_submit')}
               </button>
             </motion.form>
 
