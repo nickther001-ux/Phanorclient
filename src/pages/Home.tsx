@@ -133,8 +133,8 @@ export default function Home() {
       </section>
 
       {/* Parallax break */}
-      <section className="h-[60vh] relative overflow-hidden">
-        <div className="absolute inset-0">
+      <section style={{ height: '60vh', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0 }}>
           <img
             src="/images/coldroom.png"
             alt="Cold Storage"
@@ -143,19 +143,26 @@ export default function Home() {
               height: '100%',
               objectFit: 'cover',
               objectPosition: 'center 30%',
-              imageRendering: 'auto',
               display: 'block',
             }}
           />
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(26,26,26,0.35) 0%, rgba(26,26,26,0.55) 100%)' }} />
+          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(26,26,26,0.45) 0%, rgba(26,26,26,0.65) 100%)' }} />
         </div>
-        <div className="absolute inset-0 flex items-center justify-center">
+        <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <motion.h2
             {...fadeIn}
-            className="heading-bebas text-white/90 drop-shadow-2xl text-center"
-            style={{ fontSize: 'clamp(3rem, 8vw, 6rem)', letterSpacing: '0.12em' }}
+            className="heading-bebas"
+            style={{
+              fontSize: 'clamp(3rem, 8vw, 6rem)',
+              letterSpacing: '0.12em',
+              textAlign: 'center',
+              color: 'rgba(245,245,245,0.92)',
+              textShadow: '0 4px 32px rgba(0,0,0,0.7)',
+              lineHeight: 1.1,
+            }}
           >
-            {t('parallax_line1')}<br /><span className="text-gold">{t('parallax_line2')}</span>
+            {t('parallax_line1')}<br />
+            <span style={{ color: 'var(--gold)' }}>{t('parallax_line2')}</span>
           </motion.h2>
         </div>
       </section>
