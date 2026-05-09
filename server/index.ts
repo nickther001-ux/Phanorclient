@@ -36,14 +36,30 @@ if (isProd) {
 }
 
 async function start() {
+  // Start the HTTP server first — site loads regardless of DB status
+  app.listen(PORT, '0.0.0.0', () => {
+    console.log(`[server] Phanor API running on port ${PORT} (${isProd ? 'production' : 'development'})`);
+  });
+
+  // Attempt DB init separately so a bad DATABASE_URL doesn't kill the process
+  const dbUrl = process.env.DATABASE_URL;
+  if (!dbUrl) {
+    console.warn('[DB] DATABASE_URL is not set — skipping database init. API routes requiring DB will fail.');
+    return;
+  }
+
+  try {
+    new URL(dbUrl); // validate URL format before handing to pg
+  } catch {
+    console.error('[DB] DATABASE_URL is not a valid URL:', dbUrl.slice(0, 30) + '...');
+    console.error('[DB] Expected format: postgresql://user:password@host:5432/dbname');
+    return;
+  }
+
   try {
     await initDb();
-    app.listen(PORT, '0.0.0.0', () => {
-      console.log(`[server] Phanor API running on port ${PORT} (${isProd ? 'production' : 'development'})`);
-    });
   } catch (err) {
-    console.error('[server] Failed to start:', err);
-    process.exit(1);
+    console.error('[DB] Failed to initialise database — API routes requiring DB will return 503:', err);
   }
 }
 
