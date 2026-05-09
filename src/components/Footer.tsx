@@ -126,6 +126,20 @@ export default function Footer() {
             ))}
           </div>
         </div>
+
+        {/* Builder credit */}
+        <div style={{ marginTop: '1.5rem', textAlign: 'center' }}>
+          <a
+            href="https://ntwebux.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: 'rgba(245,245,245,0.25)', fontSize: '0.7rem', fontWeight: 300, letterSpacing: '0.08em', transition: 'color 0.2s' }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--gold)')}
+            onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(245,245,245,0.25)')}
+          >
+            built by ntwebUX.com
+          </a>
+        </div>
       </div>
     </footer>
   );
