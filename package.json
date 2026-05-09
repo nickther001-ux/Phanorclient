@@ -11,6 +11,7 @@
     "start": "concurrently \"vite preview --host 0.0.0.0 --port 5000\" \"tsx server/index.ts\""
   },
   "dependencies": {
+    "@replit/connectors-sdk": "^0.4.0",
     "@tailwindcss/vite": "^4.2.4",
     "bcrypt": "^6.0.0",
     "cloudinary": "^2.10.0",
